@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: ./kompose convert
+    kompose.version: 1.22.0 (955b78124)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: app-service-rules
+  name: app-service-rules
+spec:
+  ports:
+    - name: "59701"
+      port: 59701
+      targetPort: 59701
+  selector:
+    io.kompose.service: app-service-rules
+status:
+  loadBalancer: {}
