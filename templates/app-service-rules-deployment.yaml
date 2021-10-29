@@ -52,7 +52,7 @@ spec:
               value: edgex-redis
             - name: TRIGGER_EDGEXMESSAGEBUS_SUBSCRIBEHOST_HOST
               value: edgex-redis
-          image: edgexfoundry/app-service-configurable:2.0.1
+          image: edgexfoundry/app-service-configurable-arm64:2.0.1
           name: edgex-app-rules-engine
           ports:
             - containerPort: 59701

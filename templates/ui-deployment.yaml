@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
           - name: edgex-ui-go
-            image: edgexfoundry/edgex-ui:2.0.0
+            image: edgexfoundry/edgex-ui-arm64:2.0.0
             imagePullPolicy: IfNotPresent
             ports:
             - name: http

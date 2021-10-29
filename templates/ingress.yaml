@@ -10,5 +10,7 @@ spec:
           - path: /edgex
             pathType: Prefix
             backend:
-              serviceName: edgex-ui-go
-              servicePort: 4000
+                  service:
+                      name: edgex-ui-go
+                      port:
+                        number: 4000

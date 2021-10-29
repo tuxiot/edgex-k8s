@@ -51,7 +51,7 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-sys-mgmt-agent
-          image: edgexfoundry/sys-mgmt-agent:2.0.0
+          image: edgexfoundry/sys-mgmt-agent-arm64:2.0.0
           name: edgex-sys-mgmt-agent
           ports:
             - containerPort: 58890

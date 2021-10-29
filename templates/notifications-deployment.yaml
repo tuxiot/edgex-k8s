@@ -46,7 +46,7 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-support-notifications
-          image: edgexfoundry/support-notifications:2.0.0
+          image: edgexfoundry/support-notifications-arm64:2.0.0
           name: edgex-support-notifications
           ports:
             - containerPort: 59860
