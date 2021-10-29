@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: app-service-rules
-  name: app-service-rules
+    io.kompose.service: edgex-device-virtual
+  name: edgex-device-virtual
 spec:
   ports:
-    - name: "59701"
-      port: 59701
-      targetPort: 59701
+    - name: "59900"
+      port: 59900
+      targetPort: 59900
   selector:
-    io.kompose.service: app-service-rules
+    io.kompose.service: edgex-device-virtual
 status:
   loadBalancer: {}

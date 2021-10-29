@@ -6,13 +6,13 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: command
-  name: command
+    io.kompose.service: edgex-core-command
+  name: edgex-core-command
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: command
+      io.kompose.service: edgex-core-command
   strategy: {}
   template:
     metadata:
@@ -22,7 +22,7 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.network/edgex-network: "true"
-        io.kompose.service: command
+        io.kompose.service: edgex-core-command
     spec:
       containers:
         - env:
@@ -46,7 +46,7 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-core-command
-          image: edgexfoundry/core-command-arm64:2.0.0
+          image: edgexfoundry/core-command:2.0.0
           name: edgex-core-command
           ports:
             - containerPort: 59882

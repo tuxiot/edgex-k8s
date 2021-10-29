@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: scheduler
-  name: scheduler
+    io.kompose.service: edgex-core-consul
+  name: edgex-core-consul
 spec:
   ports:
-    - name: "59861"
-      port: 59861
-      targetPort: 59861
+    - name: "8500"
+      port: 8500
+      targetPort: 8500
   selector:
-    io.kompose.service: scheduler
+    io.kompose.service: edgex-core-consul
 status:
   loadBalancer: {}

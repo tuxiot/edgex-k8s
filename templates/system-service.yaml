@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: system
-  name: system
+    io.kompose.service: edgex-sys-mgmt-agent
+  name: edgex-sys-mgmt-agent
 spec:
   ports:
     - name: "58890"
       port: 58890
       targetPort: 58890
   selector:
-    io.kompose.service: system
+    io.kompose.service: edgex-sys-mgmt-agent
 status:
   loadBalancer: {}
