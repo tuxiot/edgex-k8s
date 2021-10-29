@@ -6,13 +6,13 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: device-virtual
-  name: device-virtual
+    io.kompose.service: edgex-core-metadata
+  name: edgex-core-metadata
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: device-virtual
+      io.kompose.service: edgex-core-metadata
   strategy: {}
   template:
     metadata:
@@ -22,7 +22,7 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.network/edgex-network: "true"
-        io.kompose.service: device-virtual
+        io.kompose.service: edgex-core-metadata
     spec:
       containers:
         - env:
@@ -42,15 +42,17 @@ spec:
               value: "false"
             - name: MESSAGEQUEUE_HOST
               value: edgex-redis
+            - name: NOTIFICATIONS_SENDER
+              value: edgex-core-metadata
             - name: REGISTRY_HOST
               value: edgex-core-consul
             - name: SERVICE_HOST
-              value: edgex-device-virtual
-          image: edgexfoundry/device-virtual-arm64:2.0.0
-          name: edgex-device-virtual
+              value: edgex-core-metadata
+          image: edgexfoundry/core-metadata:2.0.0
+          name: edgex-core-metadata
           ports:
-            - containerPort: 59900
+            - containerPort: 59881
           resources: {}
-      hostname: edgex-device-virtual
+      hostname: edgex-core-metadata
       restartPolicy: Always
 status: {}

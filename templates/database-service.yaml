@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: command
-  name: command
+    io.kompose.service: edgex-redis
+  name: edgex-redis
 spec:
   ports:
-    - name: "59882"
-      port: 59882
-      targetPort: 59882
+    - name: "6379"
+      port: 6379
+      targetPort: 6379
   selector:
-    io.kompose.service: command
+    io.kompose.service: edgex-redis
 status:
   loadBalancer: {}

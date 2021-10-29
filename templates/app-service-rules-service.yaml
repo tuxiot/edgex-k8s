@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: metadata
-  name: metadata
+    io.kompose.service: edgex-app-service-rules
+  name: edgex-app-service-rules
 spec:
   ports:
-    - name: "59881"
-      port: 59881
-      targetPort: 59881
+    - name: "59701"
+      port: 59701
+      targetPort: 59701
   selector:
-    io.kompose.service: metadata
+    io.kompose.service: edgex-app-service-rules
 status:
   loadBalancer: {}

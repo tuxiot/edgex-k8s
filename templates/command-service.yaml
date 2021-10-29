@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
-    io.kompose.service: notifications
-  name: notifications
+    io.kompose.service: edgex-core-command
+  name: edgex-core-command
 spec:
   ports:
-    - name: "59860"
-      port: 59860
-      targetPort: 59860
+    - name: "59882"
+      port: 59882
+      targetPort: 59882
   selector:
-    io.kompose.service: notifications
+    io.kompose.service: edgex-core-command
 status:
   loadBalancer: {}
