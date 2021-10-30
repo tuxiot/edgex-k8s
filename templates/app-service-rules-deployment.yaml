@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       labels:
-        app: "true"
+        app: edgex-app-service-rules
     spec:
       containers:
         - env:
