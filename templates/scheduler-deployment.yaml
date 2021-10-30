@@ -1,28 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-support-scheduler
   name: edgex-support-scheduler
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: edgex-support-scheduler
-  strategy: {}
+      app: edgex-support-scheduler
+  strategy: 
+    type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.network/edgex-network: "true"
-        io.kompose.service: edgex-support-scheduler
+        app: edgex-support-scheduler
     spec:
       containers:
         - env:
@@ -54,7 +44,4 @@ spec:
           name: edgex-support-scheduler
           ports:
             - containerPort: 59861
-          resources: {}
-      hostname: edgex-support-scheduler
       restartPolicy: Always
-status: {}

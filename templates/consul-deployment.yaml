@@ -1,42 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-core-consul
   name: edgex-core-consul
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: edgex-core-consul
+      app: edgex-core-consul
   strategy:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.network/edgex-network: "true"
-        io.kompose.service: edgex-core-consul
+        app: edgex-core-consul
     spec:
       containers:
         - image: consul:1.9.5
           name: edgex-core-consul
           ports:
             - containerPort: 8500
-          resources: {}
+              protocol: TCP 
           volumeMounts:
             - mountPath: /consul/config
               name: consul-config
             - mountPath: /consul/data
               name: consul-data
-      hostname: edgex-core-consul
       restartPolicy: Always
       volumes:
         - name: consul-config
@@ -45,4 +33,3 @@ spec:
         - name: consul-data
           persistentVolumeClaim:
             claimName: consul-data
-status: {}

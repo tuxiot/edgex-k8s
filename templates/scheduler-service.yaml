@@ -1,19 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-support-scheduler
   name: edgex-support-scheduler
 spec:
+  selector:
+    app: edgex-support-scheduler
+  type: ClusterIP
   ports:
-    - name: "59861"
+    - name: support-scheduler-port
       port: 59861
       targetPort: 59861
-  selector:
-    io.kompose.service: edgex-support-scheduler
-status:
-  loadBalancer: {}

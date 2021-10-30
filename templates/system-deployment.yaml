@@ -1,29 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-sys-mgmt-agent
   name: edgex-sys-mgmt-agent
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: edgex-sys-mgmt-agent
+      app: edgex-sys-mgmt-agent
   strategy:
     type: Recreate
   template:
     metadata:
       annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.network/edgex-network: "true"
-        io.kompose.service: edgex-sys-mgmt-agent
+        app: edgex-sys-mgmt-agent
     spec:
       containers:
         - env:
@@ -55,14 +45,11 @@ spec:
           name: edgex-sys-mgmt-agent
           ports:
             - containerPort: 58890
-          resources: {}
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: system-claim0
-      hostname: edgex-sys-mgmt-agent
       restartPolicy: Always
       volumes:
         - name: system-claim0
           persistentVolumeClaim:
             claimName: system-claim0
-status: {}

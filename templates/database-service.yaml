@@ -1,19 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-redis
   name: edgex-redis
+  namespace: default
 spec:
+  selector:
+    app: edgex-redis
+  type: ClusterIP
   ports:
-    - name: "6379"
+    - name: redis-port
       port: 6379
       targetPort: 6379
-  selector:
-    io.kompose.service: edgex-redis
-status:
-  loadBalancer: {}
+      protocol: TCP
