@@ -1,6 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
   name: edgex-nginx-ingress
   annotations:
     ingress.kubernetes.io/rewrite-target: /
@@ -9,7 +11,7 @@ spec:
     - host: ""
       http:
         paths:
-          - path: /
+          - path: /ui(/|$)(.*)
             pathType: Prefix
             backend:
                   service:
