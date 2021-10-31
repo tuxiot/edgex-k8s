@@ -7,8 +7,7 @@ spec:
   selector:
     matchLabels:
       app: edgex-core-command
-  strategy: 
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       labels:
@@ -40,5 +39,5 @@ spec:
           name: edgex-core-command
           ports:
             - containerPort: 59882
-              protocol: TCP
+      hostname: edgex-core-command
       restartPolicy: Always
