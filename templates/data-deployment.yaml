@@ -41,4 +41,5 @@ spec:
           ports:
             - containerPort: 5563
             - containerPort: 59880
+      hostname: edgex-core-data
       restartPolicy: Always

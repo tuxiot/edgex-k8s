@@ -40,4 +40,5 @@ spec:
           name: edgex-device-rest
           ports:
             - containerPort: 59986
+      hostname: edgex-device-rest
       restartPolicy: Always

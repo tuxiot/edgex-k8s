@@ -40,4 +40,5 @@ spec:
           name: edgex-support-notifications
           ports:
             - containerPort: 59860
+      hostname: edgex-support-notifications
       restartPolicy: Always

@@ -7,8 +7,7 @@ spec:
   selector:
     matchLabels:
       app: edgex-app-service-rules
-  strategy:
-    type: Recreate
+  strategy: {}
   template:
     metadata:
       labels:
@@ -43,9 +42,10 @@ spec:
             - name: TRIGGER_EDGEXMESSAGEBUS_SUBSCRIBEHOST_HOST
               value: edgex-redis
           image: edgexfoundry/app-service-configurable-arm64:2.0.1
-          name: edgex-app-rules-engine
+          name: edgex-app-service-rules 
           ports:
             - containerPort: 59701
               protocol: TCP
           resources: {}
+      hostname: edgex-app-rules-engine
       restartPolicy: Always

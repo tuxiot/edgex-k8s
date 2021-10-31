@@ -44,4 +44,5 @@ spec:
           name: edgex-support-scheduler
           ports:
             - containerPort: 59861
+      hostname: edgex-support-scheduler
       restartPolicy: Always

@@ -41,4 +41,5 @@ spec:
           name: edgex-core-metadata
           ports:
             - containerPort: 59881
+      hostname: edgex-core-metadata
       restartPolicy: Always

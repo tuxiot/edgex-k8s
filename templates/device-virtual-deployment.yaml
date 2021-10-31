@@ -41,4 +41,5 @@ spec:
           ports:
             - containerPort: 59900
               protocol: TCP
+      hostname: edgex-device-virtual
       restartPolicy: Always

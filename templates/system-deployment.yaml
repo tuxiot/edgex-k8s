@@ -48,6 +48,7 @@ spec:
           volumeMounts:
             - mountPath: /var/run/docker.sock
               name: system-claim0
+      hostname: edgex-sys-mgmt-agent
       restartPolicy: Always
       volumes:
         - name: system-claim0
