@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edgex-device-modbus
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edgex-device-modbus
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: edgex-device-modbus
+    spec:
+      containers:
+        - env:
+          - name: CLIENTS_CORE_COMMAND_HOST
+            value: edgex-core-command
+          - name: CLIENTS_CORE_DATA_HOST
+            value: edgex-core-data
+          - name: CLIENTS_CORE_METADATA_HOST
+            value: edgex-core-metadata
+          - name: CLIENTS_SUPPORT_NOTIFICATIONS_HOST
+            value: edgex-support-notifications
+          - name: CLIENTS_SUPPORT_SCHEDULER_HOST
+            value: edgex-support-scheduler
+          - name: DATABASES_PRIMARY_HOST
+            value: edgex-redis
+          - name: EDGEX_SECURITY_SECRET_STORE
+            value: "false"
+          - name: MESSAGEQUEUE_HOST
+            value: edgex-redis
+          - name: REGISTRY_HOST
+            value: edgex-core-consul
+          - name: SERVICE_HOST
+            value: edgex-device-modbus
+          image: edgexfoundry/device-modbus:2.0.0-matrinos-dev
+          name: edgex-device-modbus
+          ports:
+            - containerPort: 59901
+              protocol: TCP
+          resources: {}
+      hostname: edgex-device-modbus
+      restartPolicy: Always
