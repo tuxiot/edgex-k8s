@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: consul-config
+    app: consul-config
   name: consul-config
 spec:
   accessModes:

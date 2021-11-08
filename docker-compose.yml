@@ -28,6 +28,34 @@ networks:
   edgex-network:
     driver: bridge
 services:
+  device-modbus:
+    container_name: edgex-device-modbus
+    depends_on:
+    - consul
+    - data
+    - metadata
+    environment:
+      CLIENTS_CORE_COMMAND_HOST: edgex-core-command
+      CLIENTS_CORE_DATA_HOST: edgex-core-data
+      CLIENTS_CORE_METADATA_HOST: edgex-core-metadata
+      CLIENTS_SUPPORT_NOTIFICATIONS_HOST: edgex-support-notifications
+      CLIENTS_SUPPORT_SCHEDULER_HOST: edgex-support-scheduler
+      DATABASES_PRIMARY_HOST: edgex-redis
+      EDGEX_SECURITY_SECRET_STORE: "false"
+      MESSAGEQUEUE_HOST: edgex-redis
+      REGISTRY_HOST: edgex-core-consul
+      SERVICE_HOST: edgex-device-modbus
+    hostname: edgex-device-modbus
+    # user: root
+    # privileged: true
+    image: edgexfoundry/device-modbus:2.0.0-matrinos-dev
+    networks:
+      edgex-network: {}
+    ports:
+    - 59901:59901/tcp
+    security_opt:
+    - no-new-privileges:true
+    # user: 2002:2001
   app-service-rules:
     container_name: edgex-app-rules-engine
     depends_on:

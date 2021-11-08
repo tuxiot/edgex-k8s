@@ -1,28 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-device-rest
   name: edgex-device-rest
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: edgex-device-rest
-  strategy: {}
+      app: edgex-device-rest
+  strategy: 
+    type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.network/edgex-network: "true"
-        io.kompose.service: edgex-device-rest
+        app: edgex-device-rest
     spec:
       containers:
         - env:
@@ -46,11 +36,9 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-device-rest
-          image: edgexfoundry/device-rest:2.0.0
+          image: edgexfoundry/device-rest-arm64:2.0.0
           name: edgex-device-rest
           ports:
             - containerPort: 59986
-          resources: {}
       hostname: edgex-device-rest
       restartPolicy: Always
-status: {}

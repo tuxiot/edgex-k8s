@@ -1,29 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-redis
   name: edgex-redis
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: edgex-redis
+      app: edgex-redis
   strategy:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: ./kompose convert
-        kompose.version: 1.22.0 (955b78124)
-      creationTimestamp: null
       labels:
-        io.kompose.network/edgex-network: "true"
-        io.kompose.service: edgex-redis
+        app: edgex-redis
     spec:
       containers:
         - env:
@@ -49,14 +38,12 @@ spec:
           name: edgex-redis
           ports:
             - containerPort: 6379
-          resources: {}
+              protocol: TCP
           volumeMounts:
             - mountPath: /data
               name: db-data
-      hostname: edgex-redis
       restartPolicy: Always
       volumes:
         - name: db-data
           persistentVolumeClaim:
             claimName: db-data
-status: {}

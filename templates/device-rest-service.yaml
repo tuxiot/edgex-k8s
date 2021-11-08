@@ -1,19 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    kompose.cmd: ./kompose convert
-    kompose.version: 1.22.0 (955b78124)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: edgex-device-rest
   name: edgex-device-rest
 spec:
+  selector:
+    app: edgex-device-rest
+  type: ClusterIP
   ports:
-    - name: "59986"
+    - name: device-rest-port
       port: 59986
       targetPort: 59986
-  selector:
-    io.kompose.service: edgex-device-rest
-status:
-  loadBalancer: {}
+      protocol: TCP
+

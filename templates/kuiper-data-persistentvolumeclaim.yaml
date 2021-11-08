@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   creationTimestamp: null
   labels:
-    io.kompose.service: kuiper-data
+    app: kuiper-data
   name: kuiper-data
 spec:
   accessModes:
