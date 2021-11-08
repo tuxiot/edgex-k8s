@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edgex-senml-mqtt-export
+spec:
+  selector:
+    app: edgex-senml-mqtt-export
+  type: ClusterIP
+  ports:
+    - name: edgex-senml-mqtt-export
+      port: 59780
+      targetPort: 59780
+      protocol: TCP
