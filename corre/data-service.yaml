@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edgex-core-data
+spec:
+  selector:
+    app: edgex-core-data
+  ports:
+    - name: core-date-port-5563
+      port: 5563
+      targetPort: 5563
+    - name: core-date-port-59880
+      port: 59880
+      targetPort: 59880

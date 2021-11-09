@@ -18,6 +18,7 @@ spec:
                       name: edgex-ui-go
                       port:
                         number: 4000
+<<<<<<< HEAD
           - path: /core(/|$)(.*)
             pathType: Prefix
             backend:
@@ -25,3 +26,5 @@ spec:
                       name: edgex-device-modbus
                       port:
                         number: 59901
+=======
+>>>>>>> Group templates with edgex layers

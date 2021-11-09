@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edgex-core-metadata
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edgex-core-metadata
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: edgex-core-metadata
+    spec:
+      containers:
+        - env:
+            - name: CLIENTS_CORE_COMMAND_HOST
+              value: edgex-core-command
+            - name: CLIENTS_CORE_DATA_HOST
+              value: edgex-core-data
+            - name: CLIENTS_CORE_METADATA_HOST
+              value: edgex-core-metadata
+            - name: CLIENTS_SUPPORT_NOTIFICATIONS_HOST
+              value: edgex-support-notifications
+            - name: CLIENTS_SUPPORT_SCHEDULER_HOST
+              value: edgex-support-scheduler
+            - name: DATABASES_PRIMARY_HOST
+              value: edgex-redis
+            - name: EDGEX_SECURITY_SECRET_STORE
+              value: "false"
+            - name: MESSAGEQUEUE_HOST
+              value: edgex-redis
+            - name: NOTIFICATIONS_SENDER
+              value: edgex-core-metadata
+            - name: REGISTRY_HOST
+              value: edgex-core-consul
+            - name: SERVICE_HOST
+              value: edgex-core-metadata
+          image: edgexfoundry/core-metadata-arm64:2.1.0
+          name: edgex-core-metadata
+          ports:
+            - containerPort: 59881
+      hostname: edgex-core-metadata
+      restartPolicy: Always
