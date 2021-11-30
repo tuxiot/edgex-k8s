@@ -1,11 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  # annotations:
-  #   nginx.ingress.kubernetes.io/rewrite-target: /$2
-  name: edgex-nginx-ingress
   annotations:
-    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: edgex-nginx-ingress
+  # annotations:
+  #   ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - host: ""
@@ -18,3 +18,10 @@ spec:
                       name: edgex-ui-go
                       port:
                         number: 4000
+          - path: /device(/|$)(.*)
+            pathType: Prefix
+            backend:
+                  service:
+                      name: edgex-device-modbus
+                      port:
+                        number: 59901
