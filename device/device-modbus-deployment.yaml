@@ -36,7 +36,7 @@ spec:
             value: edgex-core-consul
           - name: SERVICE_HOST
             value: edgex-device-modbus
-          image: edgexfoundry/device-modbus:2.0.0-matrinos-dev
+          image: matrinos/edgex-device-modbus:2.0.0
           name: edgex-device-modbus
           ports:
             - containerPort: 59901
