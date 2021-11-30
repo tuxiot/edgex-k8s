@@ -18,7 +18,7 @@ spec:
                       name: edgex-ui-go
                       port:
                         number: 4000
-          - path: /device(/|$)(.*)
+          - path: /core(/|$)(.*)
             pathType: Prefix
             backend:
                   service:
