@@ -37,7 +37,7 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-core-metadata
-          image: edgexfoundry/core-metadata-arm64:2.0.0
+          image: edgexfoundry/core-metadata-arm64:2.1.0
           name: edgex-core-metadata
           ports:
             - containerPort: 59881

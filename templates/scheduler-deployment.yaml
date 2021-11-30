@@ -40,7 +40,7 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-support-scheduler
-          image: edgexfoundry/support-scheduler-arm64:2.0.0
+          image: edgexfoundry/support-scheduler-arm64:2.1.0
           name: edgex-support-scheduler
           ports:
             - containerPort: 59861

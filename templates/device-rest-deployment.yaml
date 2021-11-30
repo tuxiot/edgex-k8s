@@ -36,7 +36,7 @@ spec:
               value: edgex-core-consul
             - name: SERVICE_HOST
               value: edgex-device-rest
-          image: edgexfoundry/device-rest-arm64:2.0.0
+          image: edgexfoundry/device-rest-arm64:2.1.0
           name: edgex-device-rest
           ports:
             - containerPort: 59986
