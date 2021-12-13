@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edgex-device-ndb5e
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edgex-device-ndb5e
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: edgex-device-ndb5e
+    spec:
+      containers:
+        - env:
+          - name: CLIENTS_CORE_COMMAND_HOST
+            value: edgex-core-command
+          - name: CLIENTS_CORE_DATA_HOST
+            value: edgex-core-data
+          - name: CLIENTS_CORE_METADATA_HOST
+            value: edgex-core-metadata
+          - name: CLIENTS_SUPPORT_NOTIFICATIONS_HOST
+            value: edgex-support-notifications
+          - name: CLIENTS_SUPPORT_SCHEDULER_HOST
+            value: edgex-support-scheduler
+          - name: DATABASES_PRIMARY_HOST
+            value: edgex-redis
+          - name: EDGEX_SECURITY_SECRET_STORE
+            value: "false"
+          - name: MESSAGEQUEUE_HOST
+            value: edgex-redis
+          - name: REGISTRY_HOST
+            value: edgex-core-consul
+          - name: SERVICE_HOST
+            value: edgex-device-ndb5e
+          image: matrinos/device-ndb5e-go:1.0.1
+          name: edgex-device-ndb5e
+          ports:
+            - containerPort: 59905
+              protocol: TCP
+          resources: {}
+      hostname: edgex-device-ndb5e
+      restartPolicy: Always
