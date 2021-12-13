@@ -4,8 +4,8 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
   name: edgex-nginx-ingress
-  # annotations:
-  #   ingress.kubernetes.io/rewrite-target: /
+  #annotations:
+  #ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - host: ""
@@ -18,7 +18,21 @@ spec:
                       name: edgex-ui-go
                       port:
                         number: 4000
-          - path: /core(/|$)(.*)
+          - path: /meta
+            pathType: Prefix
+            backend:
+                  service:
+                      name: edgex-core-metadata 
+                      port:
+                        number: 59881 
+          - path: /
+            pathType: Prefix
+            backend:
+                  service:
+                      name: edgex-redis 
+                      port:
+                        number: 6379
+          - path: /modbus(/|$)(.*)
             pathType: Prefix
             backend:
                   service:

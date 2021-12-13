@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mqtt-ndb5e-sender
+spec:
+  selector:
+    app: mqtt-ndb5e-sender
+  type: ClusterIP
+  ports:
+    - name: mqtt-ndb5e-sender
+      port: 59780
+      targetPort: 59780
+      protocol: TCP

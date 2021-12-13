@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: edgex-device-virtual
+spec:
+  selector:
+    app: edgex-device-virtual
+  ports:
+    - name: device-virtual-port
+      port: 59900
+      targetPort: 59900
+      protocol: TCP

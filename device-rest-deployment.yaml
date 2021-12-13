@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: edgex-device-rest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: edgex-device-rest
+  strategy: 
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: edgex-device-rest
+    spec:
+      containers:
+        - env:
+            - name: CLIENTS_CORE_COMMAND_HOST
+              value: edgex-core-command
+            - name: CLIENTS_CORE_DATA_HOST
+              value: edgex-core-data
+            - name: CLIENTS_CORE_METADATA_HOST
+              value: edgex-core-metadata
+            - name: CLIENTS_SUPPORT_NOTIFICATIONS_HOST
+              value: edgex-support-notifications
+            - name: CLIENTS_SUPPORT_SCHEDULER_HOST
+              value: edgex-support-scheduler
+            - name: DATABASES_PRIMARY_HOST
+              value: edgex-redis
+            - name: EDGEX_SECURITY_SECRET_STORE
+              value: "false"
+            - name: MESSAGEQUEUE_HOST
+              value: edgex-redis
+            - name: REGISTRY_HOST
+              value: edgex-core-consul
+            - name: SERVICE_HOST
+              value: edgex-device-rest
+          image: edgexfoundry/device-rest-arm64:2.0.0
+          name: edgex-device-rest
+          ports:
+            - containerPort: 59986
+      hostname: edgex-device-rest
+      restartPolicy: Always
